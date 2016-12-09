@@ -1,0 +1,2 @@
+module CalendarAppointmentsHelper
+end

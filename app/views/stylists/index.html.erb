@@ -1,0 +1,28 @@
+    <div class="projects-horizontal">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Stylist</h2>
+                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
+            </div>
+            <% @stylists.each_slice(2) do |row| %>
+            <div class="row projects">
+                <% row.each do |stylist| %>
+                  <div class="col-sm-6 item">
+                      <div class="row">
+                          <div class="col-md-5">
+                              <a href="#"><%= image_tag stylist.image.url(:medium), size:"200x200", class:"img-circle" %></a>
+                          </div>
+                          <div class="col-md-7">
+                              <h3 class="name"><%= stylist.name %></h3>
+                              <p class="description"><%= stylist.bio %></p>
+                              <p class="description"><%= link_to "Create an appointment", stylist_path(stylist)%></p>
+                          </div>
+                      </div>
+                  </div>
+                <% end %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>

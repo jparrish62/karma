@@ -1,0 +1,38 @@
+  <div></div>
+  <div id="work_show_page_first_row">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4"><%= image_tag @work.image.url(:medium), size:"300x300", class:"img-rounded" %></div>
+          <div class="col-md-4"></div>
+      </div>
+      <p id="work_show_page_paragraph" class="text-center"><%= @work.body %></p>
+    </div>
+  </div>
+  <div></div>
+  <div>
+    <%= form_for [ @stylist, @work, Comment.new], remote: true do |f| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8" id="work_show_page_second_row">
+          Comment
+          <%= f.text_area :body, placeholder: 'Add a comment', class: 'form-control home_comment_comment' %><br/>
+          <%= f.submit 'Post Comment', :class => 'btn btn-default'%>
+        </div>
+      </div>
+      <% end %>
+      <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8" id="walmart_comments_first_level" id="work_show_page_second_row">
+          <%= render(partial: 'comments/comment', collection: @work.comments) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div></div>
+  <div></div>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>

@@ -1,0 +1,12 @@
+<%= comment.user_name %> :
+<%= comment.body %>
+<small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
+<li>
+  <%= form_for [comment, Comment.new], remote: true do |f| %>
+    <%= f.text_area :body, placeholder: "Add a Reply", class: 'form-control' %><br/>
+    <%= f.submit "Reply", class: '.btn btn-default'  %>
+  <% end %>
+</li>
+<ul class="<% comment.commentable_type %>" id="walmart_comments_<%= comment.id %>">
+  <%= render partial: 'comments/comment', collection: comment.comments %>
+</ul>

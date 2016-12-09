@@ -1,0 +1,23 @@
+<div>
+	<nav class="navbar navbar-default navigation-clean-button">
+		<div class="container">
+			<div class="navbar-header"><a class="navbar-brand navbar-link" href="#"><em>Salon Karma</em></a>
+				<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+			</div>
+			<div class="collapse navbar-collapse" id="navcol-1">
+				<ul class="nav navbar-nav">
+					<li role="presentation"><%= link_to "Home",   homes_path %></li>
+					<li role="presentation"><%= link_to "Prices", price_path %></li>
+					<li class="dropdown">
+						<%= link_to 'Stylist', stylists_path, :'data-toggle' => 'dropdown', :class => 'dropdown-toggle'%>
+						<ul class="dropdown-menu" role="menu">
+							<li role="presentation"><a href="#"><%= link_to "View All Stylist", stylists_path %></a></li>
+							<li role="presentation"><a href="#"><%= link_to "Create New Stylist", new_stylist_path %></a></li>
+						</ul>
+					</li>
+				</ul>
+				<p class="navbar-text navbar-right actions"><a class="navbar-link login" href="#"><%= link_to "Log In", new_user_session_path %></a> <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-default action-button" %></p>
+			</div>
+		</div>
+	</nav>
+</div>
