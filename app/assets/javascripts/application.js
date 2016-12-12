@@ -13,7 +13,8 @@
 //= require jquery-1.10.2.min
 //= require jquery-ui-1.8.23.custom.min
 //= require jquery.min
-//= require lightbox-bootstrap
+//= require lightview
+//= require spinners.min
 //= require neko-framework.js
 //= require jquery
 //= require jquery_ujs

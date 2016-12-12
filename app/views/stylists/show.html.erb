@@ -45,12 +45,12 @@
         <% @stylist_work.each do |work| %>
         <div class="col-md-4">
           <div id="thumbnail-images" class="thumbnail img-rounded" style="padding-top:30px">
-            <a>
-            <%= image_tag work.image.url(:medium), size: "175x175" %>
+            <%= link_to stylist_work_path(work), class: "lightview", data: { lightview_title: "Salon Karma" } do %>
+              <%= image_tag work.image.url(:medium), size: "175x175" %>
+            <% end %>
             <div class="caption">
-              <p><%= link_to work.body, stylist_work_path(work) %></p>
+              <p><%= work.body %></p>
             </div>
-            </a>
           </div>
         </div>
         <% end %>

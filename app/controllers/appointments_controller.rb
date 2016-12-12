@@ -6,8 +6,9 @@ class AppointmentsController < ApplicationController
     @appointment = @stylist.appointments.build(app_params)
     @appointment.user = current_user
     if @appointment.save!
+      AppointmentMailer.email_stylist(@stylist)
       session[:appointment_id] = @appointment.id
-      google_appointment = GoogleCalendarAppointment.new(@appointment)
+      google_appointment = GoogleCalendarAppointment.new(@appointment, @stylist)
       google_client = google_appointment.initial_call(oauth2callback_url)
       redirect_to google_client.authorization_uri.to_s
     else

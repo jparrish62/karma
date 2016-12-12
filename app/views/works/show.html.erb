@@ -11,7 +11,7 @@
   </div>
   <div></div>
   <div>
-    <%= form_for [ @stylist, @work, Comment.new], remote: true do |f| %>
+    <%= form_for [@stylist, @work, Comment.new], remote: true do |f| %>
     <div class="container">
       <div class="row">
         <div class="col-md-2">
@@ -26,8 +26,10 @@
       <div class="row">
         <div class="col-md-2">
         </div>
-        <div class="col-md-8" id="walmart_comments_first_level" id="work_show_page_second_row">
-          <%= render(partial: 'comments/comment', collection: @work.comments) %>
+        <div class="col-md-8" id="karma_comments_first_level" id="work_show_page_second_row">
+          <div class="comment">
+           <%= render(partial: 'comments/comment', collection: @work.comments) %>
+          </div>
         </div>
       </div>
     </div>

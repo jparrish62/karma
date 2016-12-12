@@ -1,7 +1,8 @@
 class GoogleCalendarAppointment
-  attr_accessor :appointment
+  attr_accessor :appointment, :stylist
 
-  def initialize(appointment)
+  def initialize(appointment, stylist=nil)
+    @stylist     = stylist
     @appointment = appointment
   end
 
@@ -26,12 +27,11 @@ class GoogleCalendarAppointment
   end
 
   def calendars(access_token)
-    email_mail = self.appointment.stylist.email
     client = Signet::OAuth2::Client.new(access_token: access_token)
     client.expires_in = Time.now + 1_000_000
     service = Google::Apis::CalendarV3::CalendarService.new
     service.authorization = client
-    service.insert_event('primary', client_appointment)
+    service.insert_event("primary", client_appointment)
   end
 
   def client_appointment
