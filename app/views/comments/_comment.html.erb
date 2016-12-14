@@ -2,9 +2,11 @@
 <%= comment.body %>
 <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
 <li class="comment">
-  <%= form_for [comment, Comment.new], remote: true do |f| %>
-    <%= f.text_area :body, placeholder: "Add a Reply", class: 'form-control' %><br/>
-    <%= f.submit "Reply", class: '.btn btn-default'  %>
+  <% if comment.less_than_three_levels_deep? %>
+    <%= form_for [comment, Comment.new], remote: true do |f| %>
+      <%= f.text_area :body, placeholder: "Add a Reply", class: 'form-control' %><br/>
+      <%= f.submit "Reply", class: '.btn btn-default'  %>
+    <% end %>
   <% end %>
 </li>
 <ul class="<% comment.commentable_type %>" id="karma_comments_<%= comment.id %>">
