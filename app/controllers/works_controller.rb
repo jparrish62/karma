@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-
+  before_action :authenticate_user!
   def show
     @work    = Work.find(params[:stylist_id])
     @stylist = Stylist.find(params[:id])

@@ -40,6 +40,7 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include SessionHelper
   config.include Capybara::DSL
+  config.include Warden::Test::Helpers
   config.include(Shoulda::Matchers::ActiveModel, type: :model)
   config.include(Shoulda::Matchers::ActiveRecord, type: :model)
   config.include FactoryGirl::Syntax::Methods

@@ -13,6 +13,7 @@
 //= require jquery-1.10.2.min
 //= require jquery-ui-1.8.23.custom.min
 //= require jquery.min
+//= require homes
 //= require lightview
 //= require spinners.min
 //= require neko-framework.js

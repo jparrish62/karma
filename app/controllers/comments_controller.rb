@@ -11,13 +11,13 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new comment_params
     @comment.user_id = current_user.id
     @comment.user_name = current_user.user_name
-    if @comment.save!
+    if @comment.save
       respond_to do |format|
         format.html { redirect_to :back }
         format.js {}
       end
     else
-      render 'works/show'
+      redirect_to :back, notice: "Comment can't be blank" 
     end
   end
 

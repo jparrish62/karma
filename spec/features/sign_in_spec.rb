@@ -6,4 +6,6 @@ feature 'Sign in', :devise do
     sign_in(@user)
     expect(page).to have_content 'Salon Karma'
   end
+
+  
 end

@@ -1,4 +1,6 @@
 class StylistsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @stylist = Stylist.new
     @work    = @stylist.works.build
@@ -17,7 +19,7 @@ class StylistsController < ApplicationController
   def create
     @stylist = current_user.stylists.build(stylist_params)
     if @stylist.save
-      redirect_to stylists_path
+      redirect_to stylists_path, notice: "Stylist Created"
     else
       render 'form'
     end
