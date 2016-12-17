@@ -6,7 +6,9 @@ class AppointmentsController < ApplicationController
     @stylist.email = @stylist.email.downcase!
     @appointment = @stylist.appointments.build(app_params)
     @appointment.user = current_user
-    if @appointment.save!
+    if Appointment.scheduled(@appointment)
+      redirect_to :back, notice: "Appointment Taken"
+    elsif @appointment.save!
       AppointmentMailer.email_stylist(@stylist)
       session[:appointment_id] = @appointment.id
       google_appointment = GoogleCalendarAppointment.new(@appointment, @stylist)

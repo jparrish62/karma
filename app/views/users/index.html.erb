@@ -1,5 +1,13 @@
-<div>
-  <% @users.each do |user| %>
-    <%= user.email %>
-  <% end %>
+<div class="bigbox">
+  <div class="box">
+    <table class="table-minimal">
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <%= render user %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

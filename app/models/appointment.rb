@@ -3,7 +3,7 @@ class Appointment < ApplicationRecord
   belongs_to :user,    optional: true
   belongs_to :stylist, optional: true
 
-  def self.scheduled(params)
-    Appointment.where("time == ?", "%#{params[:time]}%") && Appointment.where("date == ?", "%#{params[:date]}%") 
+  def self.scheduled(appointment)
+    Appointment.where("date == ?", "%#{appointment.date}%") && Appointment.where("time == ?", "%#{appointment.time}%")
   end
 end
