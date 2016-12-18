@@ -12,6 +12,8 @@ gem 'lightbox-bootstrap-rails', '~> 3.3', '>= 3.3.0.3'
 
 gem 'pundit', '~> 1.1'
 
+gem 'searchkick', '~> 1.4', '>= 1.4.1'
+
 gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 
 gem 'omniauth', '~> 1.3', '>= 1.3.1'

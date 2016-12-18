@@ -1,5 +1,19 @@
 <div class="container">
-<h3 class="text-center">User Index Page</h3>
+<div class="row">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+    <h3 class="text-center">User Index Page</h3>
+  </div>
+  <div class="col-md-4">
+    <%= form_tag search_users_path, method: :get, id:"search_form", role: "search" do %>
+    <p>
+      <%= text_field_tag :search, params[:search], class:"form-control" %></br>
+      <%= submit_tag "Search", name: nil, class:"btn btn-default"%>
+    </p>
+    <% end %>
+  </div>
+</div>
 <table class="table table-inverse">
   <thead>
     <tr>

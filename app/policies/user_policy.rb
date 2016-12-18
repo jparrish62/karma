@@ -6,6 +6,10 @@ class UserPolicy
     @user         = model
   end
 
+  def search?
+    @current_user.admin?
+  end
+
   def new?
     @current_user.admin?
   end

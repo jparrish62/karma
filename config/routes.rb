@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   get '/oauth2callback' => 'calendar_appointments#callback'
   get '/calendar_appointments' => 'calendar_appointments#calendars'
 
-  resources :users
+  resources :users do
+    collection do
+      get 'search'
+    end
+  end
 
   root 'homes#index'
 

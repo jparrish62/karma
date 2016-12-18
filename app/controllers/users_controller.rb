@@ -2,6 +2,15 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   after_action :verify_authorized
 
+  def search
+    authorize User
+    if params[:search].present?
+      @users = User.search(params[:search])
+    else
+      @users = User.all
+    end
+  end
+
   def index
     @users = User.all
     authorize User
