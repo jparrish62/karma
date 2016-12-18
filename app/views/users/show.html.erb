@@ -1,3 +1,29 @@
-<h3>User Show Page</h3>
-<p><%= @user.user_name %></p>
-<p><%= @user.email %></p>
+
+<div class="container">
+<h3 class="text-center">User Index Page</h3>
+  <table class="table table-inverse">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Role</th>
+        <th>Change Role</th>
+        <th>Delete User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @user.email %></td>
+        <td><%= form_for(@user) do |f| %>
+          <%= f.select(:role, User.roles.keys.map { |role| [role.titleize, role]})%>
+          <td>
+            <button><%= f.submit 'Change Role' %></button>
+          </td>
+        </td>
+        <td>
+          <%= link_to("Delete", user_path(@user), :data => { :confirm => "Are you sure?"}, :method => :delete, :class => 'button') unless @user == current_user %>
+        </td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

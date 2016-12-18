@@ -1,13 +1,18 @@
-<div class="bigbox">
-  <div class="box">
-    <table class="table-minimal">
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <%= render user %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+<div class="container">
+<h3 class="text-center">User Index Page</h3>
+<table class="table table-inverse">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.user_name, user_path(user) %></td>
+      <td><%= user.email %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>

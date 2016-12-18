@@ -2,6 +2,7 @@ class StylistsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    authorize User
     @stylist = Stylist.new
     @work    = @stylist.works.build
   end

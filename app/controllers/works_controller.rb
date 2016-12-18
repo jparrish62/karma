@@ -6,6 +6,7 @@ class WorksController < ApplicationController
   end
 
   def create
+    authorize User
     @stylist  = Stylist.find(params[:stylist_id])
     @work     = @stylist.works.create(work_params)
     if @work.save!
