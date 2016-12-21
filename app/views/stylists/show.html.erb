@@ -15,25 +15,25 @@
       <%= form_for [@stylist, @appointment] do |f| %>
       <div class="col-md-3">
         <div><%= f.text_field :name, placeholder: "name" %></div><br/>
-        <div><%= f.select(:treatment_services, options_for_select([['teatment services',' '],['Deep conditioner','Deep conditioner'],['Steam Treatment','Steam Treatment'],
-               ['Specialized hair scalp treatment','Specialized hair scalp treatment'],['Blank','Blank']])) %></div></br>
-        <div><%= f.select(:chemical_services, options_for_select([['chemical services',' '],['Relaxer touch-up','Relaxer touch-up'],['Relaxer touch-up,wrap & curl','Relaxer touch-up,wrap & curl'],['Relaxer touch-up,roller set','Relaxer touch-up roller set'],
-        		   ['Partial Relaxer','Partial Relaxer'],['Curly Perm','Curly Perm'],['Blank','Blank']])) %></div></br>
-        <div><%= f.select(:color_services, options_for_select([['color services',' '],['Semi-permanent','Semi-permanent'],['Demi permanent color','Demi permanent color'],['Permanent','Permanent'],
-               ['Highlights','Highlights'],['Blank','Blank']])) %></div></br>
+        <div><%= f.select :treatment_services, options_for_select([['teatment services',' '],'Deep conditioner','Steam Treatment',
+               ['Specialized hair scalp treatment','Specialized hair scalp treatment'],['Blank','Blank']], params[:treatment_services]) %></div></br>
+        <div><%= f.select :chemical_services, options_for_select([['chemical services',' '],['Relaxer touch-up','Relaxer touch-up'],['Relaxer touch-up,wrap & curl','Relaxer touch-up,wrap & curl'],['Relaxer touch-up,roller set','Relaxer touch-up roller set'],
+        		   ['Partial Relaxer','Partial Relaxer'],['Curly Perm','Curly Perm'],['Blank','Blank']], params[:chemical_services]) %></div></br>
+        <div><%= f.select :color_services, options_for_select([['color services',' '],['Semi-permanent','Semi-permanent'],['Demi permanent color','Demi permanent color'],['Permanent','Permanent'],
+               ['Highlights','Highlights'],['Blank','Blank']], params[:color_services]) %></div></br>
         <div><%= f.text_field :comment, placeholder: 'comment' %></div>
       </div>
       <div class="col-md-3">
-        <div><%= f.datetime_field :time, placeholder: "time", class: "time" %></div></br>
-        <div><%= f.select(:braid, options_for_select([['braid',' '],['Havana Twist','Havana Twist'],['Marley Twist','Marley Twist'],
-             ['Childrens Cornrolls with hair added','Childrens Cornrolls with hair added'],['Box Braids','Box Braids'],['Blank','Blank']])) %></div></br>
-        <div><%= f.select(:basic_services, options_for_select([['basic services',' '],['Basic wash and blow dry','Basic wah and blow dry'],['Trim','Trim'],['Eyelashes','Eyelashes'],
+        <div><%= f.datetime_field :appointment_date_time, placeholder: "date ane time", class: "time" %></div></br>
+        <div><%= f.select :braid, options_for_select([['braid',' '],['Havana Twist','Havana Twist'],['Marley Twist','Marley Twist'],
+             ['Childrens Cornrolls with hair added','Childrens Cornrolls with hair added'],['Box Braids','Box Braids'],['Blank','Blank']], params[:braid]) %></div></br>
+        <div><%= f.select :basic_services, options_for_select([['basic services',' '],['Basic wash and blow dry','Basic wah and blow dry'],['Trim','Trim'],['Eyelashes','Eyelashes'],
         		 ['Haircut-starting at','Haircut-starting at'],['Childrens cornrows(beads included)','Childrens cornrows(beads included)'],['Eyebrows','Eyebrows'],
         		 ['Flat twist style','Flat twist style'],['Ponytails','Ponytails'],['Wrap & Curl','Wrap & Curl'],['Roller Set','Roller Set'],['Flexi Rod Set','Flexi Rod Set'],
         		 ['Rod Set','Rod Set'],['Twist out','Twist out'],['Braid out','Braid out'],['Silk Wrap Press','Silk Wrap Press'],['Doobie wrapped and pinned','Doobie wrapped and pinned'],
-        		 ['Starter Locs','Starter Locs'],['Loc Re-twist','Loc Re-twist'],['Loc Style','Loc Style'],['Blank', 'Blank']])) %></div></br>
-        <div><%= f.select(:weave, options_for_select([['weave',' '],['Weave Wash and recurl','Weave Wash and recurl'],['Custom U-part Wigs','Custom U-part Wigs'],
-             ['Full Head Sew in Weave Installs','Full Head Sew in Weave Installs'],['Quick Weave Starters','Quick Weave Starters'],['Blank','Blank']])) %></div></br>
+        		 ['Starter Locs','Starter Locs'],['Loc Re-twist','Loc Re-twist'],['Loc Style','Loc Style'],['Blank', 'Blank']], params[:basic_services]) %></div></br>
+        <div><%= f.select :weave, options_for_select([['weave',' '],['Weave Wash and recurl','Weave Wash and recurl'],['Custom U-part Wigs','Custom U-part Wigs'],
+             ['Full Head Sew in Weave Installs','Full Head Sew in Weave Installs'],['Quick Weave Starters','Quick Weave Starters'],['Blank','Blank']], params[:weave]) %></div></br>
         <div><%= f.submit 'Create Appointment',class: "btn btn-default"%></div>
       </div>
       <% end %>

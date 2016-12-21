@@ -6,7 +6,7 @@ class AppointmentsController < ApplicationController
     @stylist.email = @stylist.email.downcase!
     @appointment = @stylist.appointments.build(app_params)
     @appointment.user = current_user
-    if Appointment.scheduled(@appointment)
+    if Appointment.scheduled?(@appointment)
       redirect_to :back, notice: "Appointment Taken"
     elsif @appointment.save!
       AppointmentMailer.email_stylist(@stylist)
@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
   private
 
   def app_params
-    params.require(:appointment).permit(:name, :start_time, :time, :basic_services,
+    params.require(:appointment).permit(:name, :appointment_date_time, :basic_services,
                    :chemical_services, :color_services,:treatment_services, :weave,
                    :braid, :comment)
   end
