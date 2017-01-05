@@ -1,5 +1,5 @@
 class GoogleCalendarAppointment
-  attr_accessor :appointment, :stylist
+  attr_accessor :appointment
 
   def initialize(appointment, stylist=nil)
     @stylist     = stylist
@@ -36,18 +36,22 @@ class GoogleCalendarAppointment
 
   def client_appointment
     Google::Apis::CalendarV3::Event.new({
-    summary: 'New Appointment',
+    summary: "New Appointment for #{appointment.stylist.name} Client:#{appointment.name}",
     location: 'Karma Salon',
     description: "Treatment Services #{apt.treatment_services || 'Not requested'}, Chemical Services #{apt.chemical_services || 'Not requested'},Color services #{apt.color_services || 'Non requested'}, Braid #{apt.braid || 'Not requested'}, Basic services #{apt.basic_services || 'Not requested'}, Weave #{apt.weave || 'Not requested'}",
     start: {
-    date_time: "2016-12-30T00:00:00",
+    date_time: "#{appointment.appointment_date_time.strftime('%Y-%m-%dT%H:%M:%S')}",
     time_zone: 'America/New_York',
     },
     end: {
-      date_time: "2016-12-31T00:00:00",
+      date_time: "#{appointment.appointment_date_time.strftime('%Y-%m-%dT%H:%M:%S')",
       time_zone: 'America/New_York',
     }
     })
+  end
+
+  def app_date_time
+    appointment.appointment_date_time.strftime('%Y-%m-%dT%H:%M:%S')
   end
 
   def apt

@@ -12,9 +12,9 @@
    <%= render 'layouts/nav' %>
   <body>
     <div class="container">
-      <% flash.each do |messages_type, message| %>
-        <div id="flash" class="flash-<%= messages_type %>"><%= message %></div>
-      <% end %>
+      <% flash.each do |name, msg| %>
+			<%= content_tag(:div, msg, class: "alert alert-info") %>
+		<% end %>
     </div>
     <%= yield %>
   </body>

@@ -7,15 +7,15 @@ class AppointmentsController < ApplicationController
     @appointment = @stylist.appointments.build(app_params)
     @appointment.user = current_user
     if Appointment.scheduled?(@appointment)
-      redirect_to :back, notice: "Appointment Taken"
-    elsif @appointment.save!
+      redirect_to :back, notice: "Appointment Taken. Please adjust time by 15min"
+    elsif @appointment.save
       AppointmentMailer.email_stylist(@stylist)
       session[:appointment_id] = @appointment.id
-      google_appointment = GoogleCalendarAppointment.new(@appointment, @stylist)
+      google_appointment = GoogleCalendarAppointment.new(@appointment)
       google_client = google_appointment.initial_call(oauth2callback_url)
-      redirect_to google_client.authorization_uri.to_s, notice: "Appointmnet Created"
+      redirect_to google_client.authorization_uri.to_s, notice: "Appointment Created"
     else
-      redirect_to stylist_path(@stylist),notice: "Could Not Create Appointmnet"
+      redirect_to stylist_path(@stylist),notice: "Sorry Appointmnet Couldn't Be Created. Make sure Name, Date and Time fields are filled out"
     end
   end
 
