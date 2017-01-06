@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' } do
     get 'users/sign_out' => 'devise/session#destroy'
   end
-  get '/oauth2callback' => 'calendar_appointments#callback'
-  get '/calendar_appointments' => 'calendar_appointments#calendars'
 
   resources :users do
     collection do

@@ -6,10 +6,6 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 Dotenv::Railtie.load
-KARMA_API_KEY  = ENV['GOOGLE_API_CLIENT_KEY']
-CLIENT_ID      = ENV['GOOGLE_API_CLIENT_ID']
-CLIENT_SECRET  = ENV['GOOGLE_API_CLIENT_SECRET']
-CALENDAR_SCOPE = ENV['AUTH_CALENDAR_READWRITE']
 
 module SalonKarma
   class Application < Rails::Application

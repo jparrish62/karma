@@ -10,10 +10,8 @@ class AppointmentsController < ApplicationController
       redirect_to :back, notice: "Appointment Taken. Please adjust time by 15min"
     elsif @appointment.save
       AppointmentMailer.email_stylist(@stylist)
-      session[:appointment_id] = @appointment.id
-      google_appointment = GoogleCalendarAppointment.new(@appointment)
-      google_client = google_appointment.initial_call(oauth2callback_url)
-      redirect_to google_client.authorization_uri.to_s, notice: "Appointment Created"
+      google_appointment = GoogleCalendarAppointment.new(@appointment).create_calendar_event
+      redirect_to stylist_path(@stylist),notice: "Your appointment was created."
     else
       redirect_to stylist_path(@stylist),notice: "Sorry Appointmnet Couldn't Be Created. Make sure Name, Date and Time fields are filled out"
     end
